@@ -11,15 +11,15 @@ fn main() {
     println!("the key is the argument you include while running the program {}", key);
     let contents = format!("{}\t{}\n", key, value);
     let write_result = std::fs::write("kv.db", contents);
-    match write_result {
-        Ok(()) => {
+    // match write_result {
+    //     Ok(()) => {
 
-        }
-        Err(e) => {
+    //     }
+    //     Err() => {
 
-        }
+    //     }
     
-    }
+    // }
     let database = Database::new();
 
 }
@@ -36,12 +36,16 @@ fn main() {
                //     return Err(error);
                // }
            // };
-            let contents = std::fs::read_to_string("kv.db")?; 
-           // parse the string
-            // populate our map
-            Database{
-                map: HashMap::new(),
+            let contents = std::fs::read_to_string("kv.db")?;
+            for line in contents.lines() {
+                let pair = line.split_once('\t').expect("currupt");
             }
+           // parse the string
+
+            // populate our map
+            Ok(Database{
+                map: HashMap::new(),
+            })
         }
     }
 
